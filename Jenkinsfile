@@ -1,11 +1,11 @@
-pipeline {
-    agent any
-	options { checkoutToSubdirectory('z:\\node-foo') }
-    stages {
-        stage('Example') {
-            steps {                
-                echo 'Hello World 1'
-            }
-        }
-    }
+node{
+	checkout([$class: 'GitSCM', 				
+				branches: [[name: "origin/master"]], 
+				userRemoteConfigs: [[
+                url: 'https://github.com/pipelineascodecourse/pipeline-triggers-pollSCM.git']],
+				workspace: 'z:\\node-foo'
+				])
+	stage('Build'){
+		echo 'Hello World 1'
+	}
 }
