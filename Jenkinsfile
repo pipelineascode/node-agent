@@ -1,6 +1,11 @@
-node{
-    checkoutToSubdirectory('z:\\node-foo')
-	stage('Build'){
-		echo 'Hello World 1'
-	}
+pipeline {
+    agent any
+	options { checkoutToSubdirectory('z:\\node-foo') }
+    stages {
+        stage('Example') {
+            steps {                
+                echo 'Hello World 1'
+            }
+        }
+    }
 }
